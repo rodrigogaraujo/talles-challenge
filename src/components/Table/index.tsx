@@ -1,7 +1,7 @@
 import { Table, TableCell, TableHeader, TableRow } from "./style";
 import { Transaction } from "../../models/Transaction";
 import { formatCurrency } from "../../utils";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 interface TableDataProps {
   data: Transaction[];
@@ -21,6 +21,10 @@ function TableData({ data }: TableDataProps) {
     });
     setSortedValues(sorted);
   };
+
+  useEffect(() => {
+    setSortedValues(data);
+  }, [data]);
 
   return (
     <Table>
@@ -43,7 +47,7 @@ function TableData({ data }: TableDataProps) {
         </tr>
       </thead>
       <tbody>
-        {data.map((transaction, i) => (
+        {sortedValues.map((transaction, i) => (
           <TableRow hasBg={i % 2 !== 0} key={transaction.id}>
             <TableCell>{transaction.id}</TableCell>
             <TableCell>{transaction.date}</TableCell>

@@ -11,6 +11,7 @@ function App() {
   const [startDate, setStartDate] = useState("");
   const [endDate, setEndDate] = useState("");
   const [dataFiltered, setDataFiltered] = useState<Transaction[]>([]);
+  const [loading, setLoading] = useState(true);
 
   const fetch = async () => {
     try {
@@ -18,6 +19,8 @@ function App() {
       setData(result);
     } catch (er) {
       setError("Internal error. Try again later.");
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -50,6 +53,7 @@ function App() {
   return (
     <div className="App">
       <Wrapper>
+        {loading && <h3>Loading...</h3>}
         {error && <ErrorLabel></ErrorLabel>}
         <Line>
           <Label>
