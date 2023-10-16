@@ -43,7 +43,7 @@ function TableData({ data }: TableDataProps) {
         </tr>
       </thead>
       <tbody>
-        {sortedValues.map((transaction, i) => (
+        {data.map((transaction, i) => (
           <TableRow hasBg={i % 2 !== 0} key={transaction.id}>
             <TableCell>{transaction.id}</TableCell>
             <TableCell>{transaction.date}</TableCell>
