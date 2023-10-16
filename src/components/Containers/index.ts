@@ -8,3 +8,10 @@ export const Wrapper = styled.div`
   width: 100%;
   height: 100%;
 `;
+
+export const Line = styled.div`
+  flex-direction: row;
+  align-items: center;
+  align-self: center;
+  margin: 40px 0;
+`;
