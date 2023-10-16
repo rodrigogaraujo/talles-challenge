@@ -1,24 +1,30 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { useEffect, useState } from "react";
+import { fetchData } from "./services/api";
+import { Transaction } from "./models/Transaction";
+import { ErrorLabel } from "./components/Labels/styles";
+import { Wrapper } from "./components/Containers";
+import TableData from "./components/Table";
 
 function App() {
+  const [data, setData] = useState<Transaction[]>([]);
+  const [error, setError] = useState("x");
+
+  const fetch = async () => {
+    try {
+      const result = await fetchData();
+      setData(result);
+    } catch (er) {
+      setError("Internal error. Try again later.");
+    }
+  };
+
+  useEffect(() => {
+    fetch();
+  }, []);
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Wrapper>{error && <ErrorLabel></ErrorLabel>}</Wrapper>
+      <TableData data={data} />
     </div>
   );
 }
