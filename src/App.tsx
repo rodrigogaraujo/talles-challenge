@@ -7,7 +7,7 @@ import TableData from "./components/Table";
 
 function App() {
   const [data, setData] = useState<Transaction[]>([]);
-  const [error, setError] = useState("x");
+  const [error, setError] = useState("");
   const [startDate, setStartDate] = useState("");
   const [endDate, setEndDate] = useState("");
   const [dataFiltered, setDataFiltered] = useState<Transaction[]>([]);
