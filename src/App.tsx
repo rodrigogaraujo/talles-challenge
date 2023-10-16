@@ -1,4 +1,4 @@
-import TransactionView from "./features/Transaction";
+import TransactionView from "./features/transaction/view";
 
 function App() {
   return (
