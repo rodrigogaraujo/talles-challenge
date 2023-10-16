@@ -26,6 +26,12 @@ function TableData({ data }: TableDataProps) {
           </TableRow>
         ))}
       </tbody>
+      <div>
+        <h2>
+          Total:{" "}
+          {formatCurrency(data.reduce((acc, cur) => acc + cur.amount, 0))}
+        </h2>
+      </div>
     </Table>
   );
 }
