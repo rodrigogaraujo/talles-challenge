@@ -1,6 +1,6 @@
 import { Table, TableCell, TableHeader, TableRow } from "./style";
 import { Transaction } from "../../models/Transaction";
-import { formatCurrency } from "../../utils";
+import { formatCurrency } from "../../../utils";
 import { useEffect, useState } from "react";
 
 interface TableDataProps {
